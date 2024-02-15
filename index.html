@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Examen - IntroJS</title>
+</head>
+<body>
+    <section class="container">
+        <div class="title">
+            <h1>Conversor de monedas Nacional</h1>
+            <hr>
+        </div>
+        <div class="conversor">
+            <h2>Pesos CLP</h2>
+            <input type="number" id="clp">
+
+            <label for="currencies">Elija moneda</label>
+            <select name="currencies" id="currencies">
+                <option value="dolar">Dólar</option>
+                <option value="euro">Euro</option>
+                <option value="bitcoin">Bitcoin</option>
+                <option value="uf">UF</option>
+                <option value="utm">UTM</option>
+            </select>
+            
+            <button id="converter" type="button" onclick="converter()">
+                Buscar
+            </button>
+
+            <p class="result">
+                . . .
+            </p>
+        </div>
+        <div class="graph">
+            <canvas id="myChart"></canvas>
+        </div>
+    </section>
+
+    <script 
+    src="assets/js/script.js"
+    >
+    </script>
+    <script 
+    src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"
+    >
+</script>
+</body>
+</html>
