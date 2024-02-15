@@ -80,7 +80,7 @@ async function graphCurrency(currencyValue) {
             data: {
               labels: xValues.reverse(),
               datasets: [{
-                label: "Valor histórico últimos 10 días de " + currencyValue.toUpperCase(),
+                label: "Últimos 10 valores registrados de " + currencyValue.toUpperCase(),
                 backgroundColor: "black",
                 borderColor: "red",
                 data: yValues.reverse(),
