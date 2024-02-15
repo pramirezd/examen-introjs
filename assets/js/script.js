@@ -2,43 +2,46 @@ async function converter() {
     const selector = document.querySelector("#currencies");
     const currencyValue = selector.options[selector.selectedIndex].value;
 
-    try {
+    if(currencyValue !== "Seleccione moneda") {
+        try {
         
-        const res = await fetch(`https://mindicador.cl/api/${currencyValue}`);
-        const data = await res.json();
-    
-        const resultado = document.querySelector(".result");
-        const pesos = Number(document.querySelector("#clp").value);
-    
-        const currency = Number(data.serie[0].valor);
-    
-        const preConversion = (pesos / currency);
-        const conversion = Number(preConversion.toFixed(2));
-    
-        switch (currencyValue) {
-            case "dolar":
-                resultado.innerHTML = `Resultado: $ ` + conversion;
-                break;
-            case "euro":
-                resultado.innerHTML = `Resultado: € ` + conversion;
-                break;
-            case "bitcoin":
-                resultado.innerHTML = `Resultado: ₿ ` + conversion;
-                break;
-            case "uf":
-                resultado.innerHTML = `Resultado: UF ` + conversion;
-                break;
-            case "utm":
-                resultado.innerHTML = `Resultado: UTM ` + conversion;
-                break;
+            const res = await fetch(`https://mindicador.cl/api/${currencyValue}`);
+            const data = await res.json();
+        
+            const resultado = document.querySelector(".result");
+            const pesos = Number(document.querySelector("#clp").value);
+        
+            const currency = Number(data.serie[0].valor);
+        
+            const preConversion = (pesos / currency);
+            const conversion = Number(preConversion.toFixed(2));
+        
+            switch (currencyValue) {
+                case "dolar":
+                    resultado.innerHTML = `Resultado: $ ` + conversion;
+                    break;
+                case "euro":
+                    resultado.innerHTML = `Resultado: € ` + conversion;
+                    break;
+                case "bitcoin":
+                    resultado.innerHTML = `Resultado: ₿ ` + conversion;
+                    break;
+                case "uf":
+                    resultado.innerHTML = `Resultado: UF ` + conversion;
+                    break;
+                case "utm":
+                    resultado.innerHTML = `Resultado: UTM ` + conversion;
+                    break;
+            }
+            graphCurrency(currencyValue)
         }
-        graphCurrency(currencyValue)
+    
+        catch(error) {
+            alert(error.message);
+        }
+    } else {
+        alert("Debes seleccionar una moneda");
     }
-
-    catch(error) {
-        alert(error.message);
-    }
-
 }
 
 let myChart;
